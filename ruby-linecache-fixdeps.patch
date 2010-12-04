@@ -1,0 +1,33 @@
+diff -ur ruby-linecache-0.43-o//lib/linecache.rb ruby-linecache-0.43/lib/linecache.rb
+--- ruby-linecache-0.43-o//lib/linecache.rb	2010-01-09 04:59:39.000000000 +0100
++++ ruby-linecache-0.43/lib/linecache.rb	2010-12-04 17:24:47.000000000 +0100
+@@ -59,7 +59,6 @@
+ require 'digest/sha1'
+ require 'set'
+ 
+-begin require 'rubygems' rescue LoadError end
+ require 'tracelines'
+ # require 'ruby-debug' ; Debugger.start
+ 
+diff -ur ruby-linecache-0.43-o//lib/tracelines.rb ruby-linecache-0.43/lib/tracelines.rb
+--- ruby-linecache-0.43-o//lib/tracelines.rb	2010-01-09 04:59:39.000000000 +0100
++++ ruby-linecache-0.43/lib/tracelines.rb	2010-12-04 17:25:51.000000000 +0100
+@@ -1,16 +1,9 @@
+ #!/usr/bin/env ruby
+ # $Id$
+-begin require 'rubygems' rescue LoadError end
+-# require 'ruby-debug' ; Debugger.start(:post-mortem => true)
+ 
+ module TraceLineNumbers
+   @@SRC_DIR = File.expand_path(File.dirname(__FILE__))
+-  begin
+-    require File.join(@@SRC_DIR, '..', 'ext', 'trace_nums')
+-  rescue LoadError
+-    # MSWindows seems to put this in lib rather than ext.
+-    require File.join(@@SRC_DIR, '..', 'lib', 'trace_nums')
+-  end
++  require 'trace_nums'
+ 
+   # Return an array of lines numbers that could be 
+   # stopped at given a file name of a Ruby program.
+Only in ruby-linecache-0.43/lib: tracelines.rb~
